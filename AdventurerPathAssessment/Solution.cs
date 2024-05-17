@@ -27,17 +27,22 @@ namespace AdventurerPathAssessment
                     }
                 }
 
-                double yAxis = stepsDict['F'] - stepsDict['B'];
-                double xAxis = stepsDict['R'] - stepsDict['L'];
-
-                double totalDistance = Math.Sqrt((yAxis * yAxis) + (xAxis * xAxis));
-
-                return totalDistance;
+                return CalculateSteps(stepsDict);
             }
             catch
             {
                 throw new FormatException("Directions formatted incorrectly, cannot parse.");
             }
+        }
+
+        private static double CalculateSteps(Dictionary<char, double> dictionary)
+        {
+            double yAxis = dictionary['F'] - dictionary['B'];
+            double xAxis = dictionary['R'] - dictionary['L'];
+
+            double totalDistance = Math.Sqrt((yAxis * yAxis) + (xAxis * xAxis));
+
+            return totalDistance;
         }
     }
 }
